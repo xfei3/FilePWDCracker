@@ -96,13 +96,13 @@ public class Main {
 
         Utils.start_time = System.currentTimeMillis();//not in use
         ASCIIPermutations.passWordGen("", Utils.start_char);// core function, replace this with your algorithm and just pass generated password to new thread
+        Utils.executor.shutdown();
+        while (!Utils.executor.isTerminated()) {
+        }
         if (Utils.jackpot != null) {
             System.out.println("Found the password: " + Utils.jackpot);
         }
         System.out.println("Number of password generated: " + Utils.count);
-        Utils.executor.shutdown();
-        while (!Utils.executor.isTerminated()) {
-        }
     }
 
 
