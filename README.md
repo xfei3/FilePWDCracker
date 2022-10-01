@@ -1,5 +1,5 @@
 # FilePWDCracker
-Password cracker for Java keystore and zip file.
+Password cracker for Java keystore, PDF and ZIP file.
 For Java keystore, tested JCEKS, should support jks and other format as well, just change the file type.
 
 Examples:
