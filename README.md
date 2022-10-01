@@ -15,6 +15,7 @@ java -jar FilePWDCracker.jar path/to/TestKeystore.zip ZIP 6 6 25 NO-KEYPASS NO-K
 
 
 
+
 Sorry I used an ugly way to process arguments.
 
 Argument 1: file path
@@ -31,9 +32,10 @@ Argument 6: keystore password, only use for cracking key password in keystore as
 
 Argument 7: key alias, only use for cracking key password in keystore as you need to provide key alias first. For other functions, just use NO-KEYPASS
 
-Argument 8: Starting ASCII, see details below, default is 32
+Argument 8: Starting ASCII, default is 32, see details below
 
-Argument 0: Ending ASCII, see details below, default is 126
+Argument 9: Ending ASCII, default is 126, see details below
+
 
 Permutations generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string
 You can also refer to https://www.asciitable.com/
