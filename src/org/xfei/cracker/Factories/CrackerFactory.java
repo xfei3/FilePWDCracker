@@ -1,7 +1,8 @@
-package org.xfei.cracker.Factories;
+package org.xfei.cracker.factories;
 
-import org.xfei.cracker.JCEKS.KeystoreCracker;
-import org.xfei.cracker.JCEKS.ZIPCracker;
+import org.xfei.cracker.crackers.KeystoreCracker;
+import org.xfei.cracker.crackers.PDFCracker;
+import org.xfei.cracker.crackers.ZIPCracker;
 
 public class CrackerFactory {
     private CrackerFactory()
@@ -15,8 +16,10 @@ public class CrackerFactory {
         {
             case "ZIP":
                 return new ZIPCracker();
+            case "PDF":
+                return new PDFCracker();
             case "JKS":
-            case "JCEKS":
+            case "crackers":
             default:
                 return new KeystoreCracker();
         }

@@ -1,25 +1,31 @@
-package org.xfei.cracker.Permutations;
+package org.xfei.cracker.permutations;
 
-import org.xfei.cracker.Factories.CrackerFactory;
-import org.xfei.cracker.JCEKS.KeystoreCracker;
-import org.xfei.cracker.JCEKS.ZIPCracker;
+import org.xfei.cracker.crackers.PDFCracker;
+import org.xfei.cracker.factories.CrackerFactory;
+import org.xfei.cracker.crackers.KeystoreCracker;
+import org.xfei.cracker.crackers.ZIPCracker;
 import org.xfei.cracker.Utils;
-
-import javax.rmi.CORBA.Util;
 
 public class ASCIIPermutations {
     // refer to https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string
     private static void crackZip(String currentPass, char c) {
         ZIPCracker zipcracker = (ZIPCracker) CrackerFactory.getCrackerInstance(Utils.fileType);
-        zipcracker.setFilePath(Utils.fileName);
+        zipcracker.setFilePath(Utils.filePath);
         zipcracker.setPassword(currentPass + c);
         Utils.executor.execute(zipcracker);
+    }
+
+    private static void crackPDF(String currentPass, char c) {
+        PDFCracker pdfcracker = (PDFCracker) CrackerFactory.getCrackerInstance(Utils.fileType);
+        pdfcracker.setFilePath(Utils.filePath);
+        pdfcracker.setPassword(currentPass + c);
+        Utils.executor.submit(pdfcracker);
     }
 
     private static void crackKeystore(String currentPass, char c) {
     //pass password to new thread
         KeystoreCracker kscracker = (KeystoreCracker) CrackerFactory.getCrackerInstance(Utils.fileType);
-        kscracker.setFilePath(Utils.fileName);
+        kscracker.setFilePath(Utils.filePath);
         kscracker.setFileType(Utils.fileType);
         if (Utils.keyalias != null && Utils.storepass != null) {
             //brute forcing key pass
@@ -44,15 +50,18 @@ public class ASCIIPermutations {
         if (c <= Utils.end_char) {
             if ((currentPass + c).length() >= Utils.min_length) {
                 Utils.count++;
-                System.out.println("trying password: " + currentPass + c);
+                //System.out.println("trying password: " + currentPass + c);
 
                 switch (Utils.fileType.toUpperCase())
                 {
+                    case "PDF":
+                        crackPDF(currentPass,c);
+                        break;
                     case "ZIP":
                         crackZip(currentPass,c);
                         break;
                     case "JKS":
-                    case "JCEKS":
+                    case "crackers":
                     default:
                         crackKeystore(currentPass,c);
                 }

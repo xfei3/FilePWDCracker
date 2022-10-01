@@ -1,4 +1,4 @@
-package org.xfei.cracker.Factories;
+package org.xfei.cracker.factories;
 
 public interface Cracker {
 }

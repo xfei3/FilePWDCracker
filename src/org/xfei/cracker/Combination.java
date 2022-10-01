@@ -1,4 +1,5 @@
 package org.xfei.cracker;
+//Currently not in use!!!
 
 // Java program to print all combination of size r in an array of size n
 import java.io.*;

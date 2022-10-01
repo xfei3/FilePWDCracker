@@ -1,6 +1,6 @@
 package org.xfei.cracker;
 
-import org.xfei.cracker.Permutations.ASCIIPermutations;
+import org.xfei.cracker.permutations.ASCIIPermutations;
 
 import java.util.concurrent.Executors;
 
@@ -13,9 +13,9 @@ public class Main {
         //ugly way to get arguments, need to improve
         if (args.length > 0 && args[0] != null) // target file path
         {
-            Utils.fileName = args[0];
+            Utils.filePath = args[0];
         }
-        if (args.length > 1 && args[1] != null) // file type, JCEKS, JKS etc.
+        if (args.length > 1 && args[1] != null) // file type, crackers, JKS etc.
         {
             Utils.fileType = args[1];
         }
@@ -85,20 +85,24 @@ public class Main {
  combo.printCombination(arr, n, i);
  }
  **/
-        System.out.println("File name: " + Utils.fileName);
+        System.out.println("File name: " + Utils.filePath);
         System.out.println("File type: " + Utils.fileType);
         System.out.println("Password min length: " + Utils.min_length);
         System.out.println("Password max length: " + Utils.max_length);
         System.out.println("Number of threads: " + Utils.threads);
         Utils.executor = Executors.newFixedThreadPool(Utils.threads); // thread pool
-
-//        Utils.testReadingJCEKS("888888", "CERT1", "999888");  //simple unit test
+//        simple unit test
+//        Utils.testReadingJCEKS("888888", "CERT1", "999888");
+//        Utils.testReadingPDF(Utils.filePath,"123456");
 
         Utils.start_time = System.currentTimeMillis();//not in use
         ASCIIPermutations.passWordGen("", Utils.start_char);// core function, replace this with your algorithm and just pass generated password to new thread
+
+        //Utils.done=true;
         Utils.executor.shutdown();
         while (!Utils.executor.isTerminated()) {
         }
+
         if (Utils.jackpot != null) {
             System.out.println("Found the password: " + Utils.jackpot);
         }
