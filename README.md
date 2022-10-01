@@ -13,6 +13,8 @@ java -jar FilePWDCracker.jar path/to/TestKeystore JCEKS 6 6 25 888888 CERT1 48 5
 Crack zip file password:
 java -jar FilePWDCracker.jar path/to/TestKeystore.zip ZIP 6 6 25 NO-KEYPASS NO-KEYPASS 48 57
 
+Crack pdf file password:
+java -jar FilePWDCracker.jar path/to/pdfsample.pdf PDF 6 6 50 NO-KEYPASS NO-KEYPASS 48 57
 
 
 
@@ -37,7 +39,7 @@ Argument 8: Starting ASCII, default is 32, see details below
 Argument 9: Ending ASCII, default is 126, see details below
 
 
-Permutations generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string
+Permutation generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string
 You can also refer to https://www.asciitable.com/
 For example, if the password just cotains numbers, then use ASCII 48 - 57; if a-z, then 97-122; if all characters, then 32-126.
 
