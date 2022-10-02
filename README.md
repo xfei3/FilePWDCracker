@@ -1,8 +1,8 @@
-# FilePWDCracker
+# Description
 Password cracker for Java keystore, PDF and ZIP file.
 For Java keystore, tested JCEKS, should support jks and other format as well, just change the file type.
 
-Examples:
+# Examples
 
 Crack keystore password:
 java -jar FilePWDCracker.jar path/to/TestKeystore JCEKS 6 6 25 NO-KEYPASS NO-KEYPASS 48 57
@@ -19,6 +19,7 @@ java -jar FilePWDCracker.jar path/to/pdfsample.pdf PDF 6 6 50 NO-KEYPASS NO-KEYP
 Crack file password with char exclusion:
 java -jar FilePWDCracker.jar path/to/pdfsample.pdf PDF 6 6 50 NO-KEYPASS NO-KEYPASS 46 58 47-48,55-56
 
+# Arguments
 
 Sorry I used an ugly way to process arguments.
 
@@ -42,7 +43,7 @@ Argument 9: Ending ASCII, default is 126, see details below
 
 Argument 10: char exclusion. For example, say the password contains char 46 to 58, and you can exclude some chars like 47-48,55-56. If you just want to exclude single char, then just use something like 47-47
 
-
+# Algorithm
 Permutation generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string .
 You can also refer to https://www.asciitable.com/ as well.
 For example, if the password just cotains numbers, then use ASCII 48 - 57; if a-z, then 97-122; if all characters, then 32-126.
