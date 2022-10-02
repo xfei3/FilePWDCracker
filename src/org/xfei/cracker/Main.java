@@ -2,6 +2,7 @@ package org.xfei.cracker;
 
 import org.xfei.cracker.permutations.ASCIIPermutations;
 
+import java.time.Duration;
 import java.util.concurrent.Executors;
 
 public class Main {
@@ -44,47 +45,25 @@ public class Main {
 
         if (args.length > 7 && args[7] != null)// ascii based solution, start with SPACE
         {
-            Utils.start_char = (char)Integer.parseInt(args[7]);
+            Utils.start_char = (char) Integer.parseInt(args[7]);
         }
 
         if (args.length > 8 && args[8] != null)// ascii based solution, start with SPACE
         {
-            Utils.end_char = (char)Integer.parseInt(args[8]);
+            Utils.end_char = (char) Integer.parseInt(args[8]);
         }
-/** currently not in use, however, if you want to use your own algorithem, you can refer to it.
- if (args.length > 7 && args[7] != null) { // example: numeric_upper_lower_allsymbols,
- combo_options = args[7].split("_");
- }
- for (int i = 0; combo_options != null && i < combo_options.length; i++) {
- switch (combo_options[i]) {
- case Utils.NUMERIC:
- Utils.combos.addAll(Arrays.asList(Utils.ARRAY_NUMERIC));
- break;
- case Utils.UPPER:
- Utils.combos.addAll(Arrays.asList(Utils.ARRAY_UPPER));
- break;
- case Utils.LOWER:
- Utils.combos.addAll(Arrays.asList(Utils.ARRAY_LOWER));
- break;
- case Utils.SYMBOLS_09:
- Utils.combos.addAll(Arrays.asList(Utils.ARRAY_SYMBOLS_09));
- break;
- case Utils.SYMBOLS_ALL:
- Utils.combos.addAll(Arrays.asList(Utils.ARRAY_SYMBOLS_ALL));
- break;
- default:
- break;
- }
- }
- Combination combo = new Combination();
- String arr[] = Utils.setToArray(Utils.combos);
+        if (args.length > 9 && args[9] != null)// ascii exclusions, examples 57-57,55-58
+        {
+            String excStr = args[9];
+            if (excStr.contains(",")) {
+                for (String range : excStr.split(",")) {
+                    Utils.generateChars(range);
+                }
+            } else {
+                Utils.generateChars(excStr);
+            }
+        }
 
- int n = arr.length;
-
- for(int i=Utils.min_length;i<=Utils.max_length;i++) {
- combo.printCombination(arr, n, i);
- }
- **/
         System.out.println("File name: " + Utils.filePath);
         System.out.println("File type: " + Utils.fileType);
         System.out.println("Password min length: " + Utils.min_length);
@@ -95,7 +74,7 @@ public class Main {
 //        Utils.testReadingJCEKS("888888", "CERT1", "999888");
 //        Utils.testReadingPDF(Utils.filePath,"123456");
 
-        Utils.start_time = System.currentTimeMillis();//not in use
+        Utils.start_time = System.currentTimeMillis();
         ASCIIPermutations.passWordGen("", Utils.start_char);// core function, replace this with your algorithm and just pass generated password to new thread
 
         //Utils.done=true;
@@ -105,9 +84,11 @@ public class Main {
 
         if (Utils.jackpot != null) {
             System.out.println("Found the password: " + Utils.jackpot);
+        } else {
+            System.out.println("No password found.");
         }
-        System.out.println("Number of password generated: " + Utils.count);
+        System.out.println("Number of password tried: " + Utils.count);
+        System.out.println("Minutes used: " + Duration.ofMillis(Utils.end_time - Utils.start_time).toMinutes());
     }
-
 
 }

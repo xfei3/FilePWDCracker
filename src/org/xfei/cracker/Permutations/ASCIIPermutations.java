@@ -47,6 +47,10 @@ public class ASCIIPermutations {
         if (Utils.found) {
             return;
         }
+        while(Utils.exlusions.contains(new Character(c)))
+        {
+            c++;
+        }
         if (c <= Utils.end_char) {
             if ((currentPass + c).length() >= Utils.min_length) {
                 Utils.count++;

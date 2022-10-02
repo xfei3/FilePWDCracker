@@ -9,17 +9,6 @@ import java.util.*;
 import java.util.concurrent.ExecutorService;
 
 public class Utils {
-    public static final String NUMERIC = "numeric";
-    public static final String UPPER = "upper";
-    public static final String LOWER = "lower";
-    public static final String SYMBOLS_ALL = "allsymbols";
-    public static final String SYMBOLS_09 = "09symbols";
-    public static final String[] ARRAY_NUMERIC = new String[]{"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
-    public static final String[] ARRAY_UPPER = new String[]{"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
-    public static final String[] ARRAY_LOWER = new String[]{"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
-    public static final String[] ARRAY_SYMBOLS_09 = new String[]{"!", "@", "#", "$", "%", "^", "&", "*", "(", ")"};
-    public static final String[] ARRAY_SYMBOLS_ALL = new String[]{" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"};
-    public static Set<String> combos = new HashSet<String>();
     public static int min_length = 6, max_length = 8, threads = 20, count = 0;
     public static long start_time, end_time;
     public static String filePath;
@@ -29,8 +18,9 @@ public class Utils {
     public static String NOKEYPASS = "NO-KEYPASS";
     public static String jackpot = null;
     public static char start_char = ' ', end_char = '~';
-    public static Boolean found = false, done = false;
+    public static Boolean found = false;
     public static ExecutorService executor = null;
+    public static HashSet<Character> exlusions = new HashSet<Character>();
 
     public static void testReadingPDF(String filePath, String password) {
 
@@ -83,7 +73,21 @@ public class Utils {
 
 
     }
-
+    public static void generateChars(String charRange)
+    {
+        if(charRange.contains("-"))
+        {
+            String[] range= charRange.split("-");
+            if(range.length==2)
+            {
+                for(int i=Integer.parseInt(range[0]); i <= Integer.parseInt(range[1]);i++)
+                {
+                    Utils.exlusions.add(new Character((char)i));
+                    System.out.println((char)i);
+                }
+            }
+        }
+    }
 //    public static String[] setToArray(Set st) {
 //        String arr[] = new String[st.size()];
 //
