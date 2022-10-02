@@ -39,8 +39,8 @@ Argument 8: Starting ASCII, default is 32, see details below
 Argument 9: Ending ASCII, default is 126, see details below
 
 
-Permutation generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string
-You can also refer to https://www.asciitable.com/
+Permutation generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string .
+You can also refer to https://www.asciitable.com/ as well.
 For example, if the password just cotains numbers, then use ASCII 48 - 57; if a-z, then 97-122; if all characters, then 32-126.
 
 To to: add ASCII exclusion.
