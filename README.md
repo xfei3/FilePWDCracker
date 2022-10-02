@@ -37,11 +37,11 @@ Argument 6: keystore password, only use for cracking key password in keystore as
 
 Argument 7: key alias, only use for cracking key password in keystore as you need to provide key alias first. For other functions, just use NO-KEYPASS
 
-Argument 8: Starting ASCII, default is 32, see details below
+Argument 8: Starting ASCII, default is 32, see algorithm details below
 
-Argument 9: Ending ASCII, default is 126, see details below
+Argument 9: Ending ASCII, default is 126, see algorithm details below
 
-Argument 10: char exclusion. For example, say the password contains char 46 to 58, and you can exclude some chars like 47-48,55-56. If you just want to exclude single char, then just use something like 47-47
+Argument 10: char exclusion. For example, say the password contains chars from 46 to 58, and then you can exclude chars like java -jar .... 47-48,55-56. If you just want to exclude single char, then use something like 47-47. see algorithm details below.
 
 # Algorithm
 Permutation generation is based on answer in https://stackoverflow.com/questions/16848918/how-to-generate-the-password-with-permutation-of-string .
