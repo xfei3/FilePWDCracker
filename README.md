@@ -1,22 +1,22 @@
 # Description
 Password cracker for Java keystore, PDF and ZIP file.
-For Java keystore, JCEKS is tested, other format like jks should be supported as well, just change the file type in the argument.
+For Java keystore, JCEKS is tested, other format like JKS should be supported as well, just change the file type in the argument.
 
 # Examples
 
-Crack keystore password:
+1. Crack keystore password:
 java -jar FilePWDCracker.jar path/to/TestKeystore JCEKS 6 6 25 NO-KEYPASS NO-KEYPASS 48 57
 
-Crack key password in keystore:
+2. Crack key password in keystore:
 java -jar FilePWDCracker.jar path/to/TestKeystore JCEKS 6 6 25 888888 CERT1 48 57
 
-Crack zip file password:
+3. Crack zip file password:
 java -jar FilePWDCracker.jar path/to/TestKeystore.zip ZIP 6 6 25 NO-KEYPASS NO-KEYPASS 48 57
 
-Crack pdf file password:
+4. Crack pdf file password:
 java -jar FilePWDCracker.jar path/to/pdfsample.pdf PDF 6 6 50 NO-KEYPASS NO-KEYPASS 48 57
 
-Crack file password with char exclusion:
+5. Crack file password with char exclusion:
 java -jar FilePWDCracker.jar path/to/pdfsample.pdf PDF 6 6 50 NO-KEYPASS NO-KEYPASS 46 58 47-48,55-56
 
 # Arguments
