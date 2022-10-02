@@ -1,6 +1,6 @@
 # Description
 Password cracker for Java keystore, PDF and ZIP file.
-For Java keystore, tested JCEKS, should support jks and other format as well, just change the file type.
+For Java keystore, JCEKS is tested, other format like jks should be supported as well, just change the file type in the argument.
 
 # Examples
 
